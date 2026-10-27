@@ -3,6 +3,7 @@ import {useCallback,useEffect,useMemo,useState} from 'react';
 import {configured,getSupabase} from '../lib/supabase';
 import {ISSUER_FALLBACK,PRODUCTS,QA_STEPS,RESULT_LABELS,LEAD_LABELS,eur,dt,day,quoteRef,invoiceRef,validFinnishIban} from '../lib/config';
 import {saveQuotePdf,saveInvoicePdf} from '../lib/pdf';
+import Onboarding from './Onboarding';
 
 const MENUS=[{id:'home',n:'Työpöytä',icon:'▦'},{id:'demo',n:'Esittely',icon:'▤'},{id:'crm',n:'Yrityskäynnit',icon:'▥'},{id:'calculator',n:'Tarjous',icon:'＋'},{id:'documents',n:'Tarjoukset',icon:'▧'},{id:'orders',n:'Tilaukset',icon:'□'},{id:'admin',n:'Ylläpito',icon:'◈'}];
 const blankProspect={company_name:'',business_id:'',contact_name:'',contact_email:'',contact_phone:'',contact_status:'review',notes:''};
@@ -84,7 +85,7 @@ export default function App(){
   const filtered=prospects.filter(p=>(p.company_name+' '+(p.contact_name||'')+' '+(p.business_id||'')).toLowerCase().includes(search.toLowerCase()));
   return <div className="shell">
     <aside className="sidebar"><div className="logo">ARV<span>O</span>STA</div><div className="logoSub">VIDO SOCIAL · SALES</div><div className="sidebarDivider"/><div className="navHead">TYÖTILA</div><nav className="sidebarNav">{nav.map(n=><button key={n.id} onClick={()=>setPage(n.id)} className={page===n.id?'selected':''}><span className="navIcon">{n.icon}</span>{n.n}</button>)}</nav><div className="sidebarEnd"><div className="quiet">PILOTTI · 28.10.2026</div><strong>Itäkeskus · klo 12.00</strong><small>Myyntikäynnit ja tarjoukset tallennetaan pilveen.</small></div></aside>
-    <div className="workspace"><header className="topbar"><div><div className="mobileLogo">ARV<span>O</span>STA <small>Sales</small></div><span className="topContext">{nav.find(n=>n.id===page)?.n}</span></div><div className="topActions"><Badge tone="green">Kirjautunut</Badge><span className="userMail">{user.email}</span><Act kind="text" onClick={logout}>Ulos</Act></div></header>
+    <div className="workspace"><header className="topbar"><div><div className="mobileLogo">ARV<span>O</span>STA <small>Sales</small></div><span className="topContext">{nav.find(n=>n.id===page)?.n}</span></div><div className="topActions"><Onboarding userId={user.id} onNavigate={p=>{setPage(p);setMoreMenu(false);window.scrollTo(0,0)}}/><Badge tone="green">Kirjautunut</Badge><span className="userMail">{user.email}</span><Act kind="text" onClick={logout}>Ulos</Act></div></header>
       <div className="content">{error&&<div className="alert danger" role="alert"><span>{error}</span><Act kind="text" onClick={()=>setError('')}>Sulje</Act></div>}{toast&&<div className="alert" role="status"><span>{toast}</span><Act kind="text" onClick={()=>setToast('')}>×</Act></div>}
       {page==='home'&&<>
         <SectionHeading eyebrow="ARVOSTA / PILOTTI" title="Myynti alkaa tästä." desc="Koko myyntipäivän tilanne, tavoitteet ja seuraavat toimet yhdessä paikassa." action={<Act onClick={load} disabled={loading}>Päivitä tiedot</Act>}/>
