@@ -31,3 +31,14 @@
 .stagePicker label{font-size:11px;color:var(--muted);white-space:nowrap}
 .stagePicker select{min-height:37px;max-width:190px;padding:7px 9px;font-size:12px}
 @media(max-width:630px){.stagePicker select{max-width:none;flex:1}.priorityTag{font-size:10px}}
+
+/* Mobile onboarding: keep instructions in the visible center, away from the top browser chrome. */
+@media(max-width:600px){
+ .onboardBackdrop{align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));min-height:100dvh}
+ .onboardDialog{width:100%;max-height:calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));border-radius:20px;padding:22px 20px;overscroll-behavior:contain}
+ .onboardProgress{margin:13px 0 18px}
+ .onboardDialog h2{font-size:clamp(21px,5.6vw,26px);line-height:1.25}
+ .onboardDialog p{font-size:14px;line-height:1.55;margin-bottom:12px}
+ .onboardActions{margin:16px 0 12px}
+}
+@media(max-width:600px) and (max-height:570px){.onboardBackdrop{align-items:center}.onboardDialog{padding:16px}.onboardProgress{margin:8px 0 12px}.onboardActions{margin:10px 0}}
