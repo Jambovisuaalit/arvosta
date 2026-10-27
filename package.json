@@ -1,0 +1,17 @@
+{
+  "name": "arvosta-sales-v3",
+  "version": "0.3.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.118.0",
+    "jspdf": "4.2.1",
+    "next": "16.4.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  }
+}
