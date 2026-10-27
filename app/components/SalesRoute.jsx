@@ -49,7 +49,7 @@ export default function SalesRoute({prospects=[],visits=[],onRecordVisit,onOpenC
           </label>
           <label>Käynnin tulos
             <select className="input" value={result[stop.id]||'attempt'} onChange={e=>setResult(a=>({...a,[stop.id]:e.target.value}))}>
-              <option value="attempt">Käyntiyritys</option><option value="contact">Kontakti</option><option value="demo">Esittely</option><option value="quote">Tarjous</option>
+              <option value="attempt">Käyntiyritys</option><option value="demo">Esittely</option><option value="follow_up">Jatkotoimi</option><option value="quote_requested">Tarjouspyyntö</option><option value="order_requested">Tilauspyyntö</option><option value="no_interest">Ei kiinnostusta</option>
             </select>
           </label>
           <label>Havainto / jatkotoimi
