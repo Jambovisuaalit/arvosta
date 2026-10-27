@@ -5,3 +5,17 @@
 @media(min-width:851px){.mobileMoreMenu{display:none}}
 @media(min-width:650px) and (max-width:1100px){.launchCard{min-height:220px}.card{padding:20px}}
 @media(max-width:420px){.launchCard .actions{display:grid;grid-template-columns:1fr}.launchCard .button{width:100%}.quoteTotal{align-items:flex-start;flex-wrap:wrap}.quoteTotal strong{width:100%;font-size:30px}.paper{padding:20px 14px}}
+
+
+/* Guided mobile onboarding */
+.onboardBackdrop{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.77);display:flex;align-items:center;justify-content:center;padding:20px}
+.onboardDialog{width:min(100%,480px);max-height:calc(100dvh - 32px);overflow:auto;background:#112820;border:1px solid #54725c;border-radius:20px;padding:26px;box-shadow:0 24px 80px #000a}
+.onboardTop{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.08em}
+.onboardProgress{height:5px;background:#2b493a;border-radius:8px;margin:16px 0 25px;overflow:hidden}
+.onboardProgress>div{height:100%;background:var(--accent);transition:width .2s}
+.onboardDialog h2{font-size:26px;margin:0 0 14px}
+.onboardDialog p{font-size:15px;line-height:1.7;color:#d2dfd2;min-height:100px}
+.onboardActions{display:flex;gap:10px;justify-content:space-between;margin:22px 0 18px}
+.onboardActions .button{min-height:48px}
+.onboardDialog>small{color:var(--muted);line-height:1.5}
+@media(max-width:600px){.onboardBackdrop{align-items:flex-end;padding:0}.onboardDialog{width:100%;max-height:calc(100dvh - 16px);border-radius:22px 22px 0 0;padding:24px 20px calc(24px + env(safe-area-inset-bottom))}.onboardDialog p{min-height:0}.onboardActions .button{flex:1}}
